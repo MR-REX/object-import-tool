@@ -62,7 +62,12 @@ class OIT_ObjectImportTool : WorldEditorTool
 	
 	protected bool TryToCreateEntity(array<string> row)
 	{
-		if (row.Count() < 9)
+		int countOfRequiredArguments = 8;
+		
+		if (m_bUseQuaternions)
+			countOfRequiredArguments = 9;
+		
+		if (row.Count() < countOfRequiredArguments)
 			return false;
 		
 		string className = row[0];
